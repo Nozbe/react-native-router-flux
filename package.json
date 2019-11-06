@@ -29,8 +29,8 @@
     "path-to-regexp": "^2.4.0",
     "prop-types": "^15.6.2",
     "react-navigation": "^4.x",
-    "react-navigation-drawer": "^2.2.1",
-    "react-navigation-stack": "^1.7.3",
+    "react-navigation-drawer": "^2.3.3",
+    "react-navigation-stack": "^1.10.3",
     "react-navigation-tabs": "^2.5.2",
     "remove": "^0.1.5"
   },
