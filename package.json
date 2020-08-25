@@ -22,17 +22,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "@babel/runtime": "^7.6.0",
-    "add": "^2.0.6",
-    "lodash": "^4.17.15",
-    "opencollective": "^1.0.3",
     "path-to-regexp": "^2.4.0",
-    "prop-types": "^15.6.2",
     "react-navigation": "^4.x",
     "react-navigation-drawer": "^2.3.3",
-    "react-navigation-stack": "^1.10.3",
-    "react-navigation-tabs": "^2.5.2",
-    "remove": "^0.1.5"
+    "react-navigation-stack": "^1.10.3"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.47",

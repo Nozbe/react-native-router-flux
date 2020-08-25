@@ -1,4 +1,4 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import { NavigationActions, StackActions } from 'react-navigation';
 import * as ActionConst from './ActionConst';
 import { getActiveState, popPrevious } from './State';
@@ -16,7 +16,8 @@ export default function createReducer(store) {
         newState = navigationStore.getStateForAction(StackActions.pop(), currentState);
         if (newState) {
           nextScene = getActiveState(newState).routeName;
-          if (nextScene !== routeName && _.isEqual(currentState, newState)) {
+          // if (nextScene !== routeName && _.isEqual(currentState, newState)) {
+          if (nextScene !== routeName && currentState === newState) {
             console.warn(`popTo called with an unknown routeName: ${routeName}, current scene: ${nextScene}`);
             break;
           }

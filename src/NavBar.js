@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { DrawerActions } from 'react-navigation-drawer';
-import _backButtonImage from '../images/back_chevron.png';
+// import _backButtonImage from '../images/back_chevron.png';
 
 const hitSlop = {
   top: 15,
@@ -16,7 +16,7 @@ const hitSlop = {
 export function BackButton(state) {
   const textButtonStyle = [styles.barBackButtonText, state.backButtonTextStyle];
   const style = [styles.backButton, state.leftButtonStyle];
-  const buttonImage = state.backButtonImage || _backButtonImage;
+  const buttonImage = state.backButtonImage;// || _backButtonImage;
   const tintColor = getValue(state.backButtonTintColor, state) || state.tintColor || state.navBarButtonColor || state.headerTintColor;
   let onPress = state.onBack;
   if (onPress) {

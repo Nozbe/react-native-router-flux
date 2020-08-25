@@ -3,14 +3,14 @@ import { Image, Animated, Easing } from 'react-native';
 import { createAppContainer, NavigationActions, StackActions } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator, DrawerActions } from 'react-navigation-drawer';
-import { createMaterialTopTabNavigator, createBottomTabNavigator } from 'react-navigation-tabs';
+// import { createMaterialTopTabNavigator, createBottomTabNavigator } from 'react-navigation-tabs';
 import PropTypes from 'prop-types';
 import createReducer from './Reducer';
 import * as ActionConst from './ActionConst';
 import { OnEnter, OnExit, assert } from './Util';
 import { LeftButton, RightButton, BackButton } from './NavBar';
 import LightboxRenderer from './LightboxRenderer';
-import _drawerImage from '../images/menu_burger.png';
+// import _drawerImage from '../images/menu_burger.png';
 import { getActiveState, getParent, getRouteNameByKey } from './State';
 import Modal from './Modal';
 import Lightbox from './Lightbox';
@@ -19,7 +19,7 @@ import Tabs from './Tabs';
 import Overlay from './Overlay';
 import OverlayRenderer from './OverlayRenderer';
 import createStackNavigatorHOC from './createStackNavigatorHOC';
-import createTabNavigatorHOC from './createTabNavigatorHOC';
+// import createTabNavigatorHOC from './createTabNavigatorHOC';
 
 let RightNavBarButton;
 let LeftNavBarButton;
@@ -659,9 +659,9 @@ export default class NavigationStore {
       }
     }
 
-    if (drawer) {
-      commonProps.drawerImage = commonProps.drawerImage || _drawerImage;
-    }
+    // if (drawer) {
+    //   commonProps.drawerImage = commonProps.drawerImage || _drawerImage;
+    // }
 
     const children = !Array.isArray(parentProps.children) ? [parentProps.children] : [].concat(...parentProps.children);
     // add clone scenes
@@ -794,7 +794,11 @@ export default class NavigationStore {
       return navigator(res, navigationConfig);
     }
     if (renderer) {
-      return tabs ? createTabNavigatorHOC(renderer)(res, navigationConfig) : createStackNavigatorHOC(renderer)(res, navigationConfig);
+      // return tabs ? createTabNavigatorHOC(renderer)(res, navigationConfig) : createStackNavigatorHOC(renderer)(res, navigationConfig);
+      if (tabs) {
+        throw new Error('tabs not supported in this fork');
+        return createStackNavigatorHOC(renderer)(res, navigationConfig);
+      }
     }
     if (lightbox) {
       return createStackNavigatorHOC(LightboxRenderer)(res, {
@@ -807,22 +811,23 @@ export default class NavigationStore {
     }
 
     if (tabs) {
-      let createTabNavigator = createMaterialTopTabNavigator;
-      if (tabBarPosition !== 'top') {
-        createTabNavigator = createBottomTabNavigator;
-      }
+      throw new Error('tabs not supported in this fork');
+      // let createTabNavigator = createMaterialTopTabNavigator;
+      // if (tabBarPosition !== 'top') {
+      //   createTabNavigator = createBottomTabNavigator;
+      // }
 
-      return createTabNavigator(res, {
-        lazy,
-        tabBarComponent,
-        initialRouteName,
-        initialRouteParams,
-        tabBarPosition,
-        order,
-        ...commonProps,
-        tabBarOptions: createTabBarOptions(commonProps),
-        navigationOptions: createNavigationOptions(commonProps),
-      });
+      // return createTabNavigator(res, {
+      //   lazy,
+      //   tabBarComponent,
+      //   initialRouteName,
+      //   initialRouteParams,
+      //   tabBarPosition,
+      //   order,
+      //   ...commonProps,
+      //   tabBarOptions: createTabBarOptions(commonProps),
+      //   navigationOptions: createNavigationOptions(commonProps),
+      // });
     }
 
     if (drawer) {
@@ -845,16 +850,17 @@ export default class NavigationStore {
     }
 
     if (overlay) {
-      return createTabNavigatorHOC(OverlayRenderer)(res, {
-        lazy,
-        initialRouteName,
-        contentComponent,
-        initialRouteParams,
-        order,
-        ...commonProps,
-        tabBarOptions: createTabBarOptions(commonProps),
-        navigationOptions: createNavigationOptions(commonProps),
-      });
+      throw new Error('overlay/tabs not supported in this fork');
+      // return createTabNavigatorHOC(OverlayRenderer)(res, {
+      //   lazy,
+      //   initialRouteName,
+      //   contentComponent,
+      //   initialRouteParams,
+      //   order,
+      //   ...commonProps,
+      //   tabBarOptions: createTabBarOptions(commonProps),
+      //   navigationOptions: createNavigationOptions(commonProps),
+      // });
     }
     return createStackNavigator(res, {
       mode,
